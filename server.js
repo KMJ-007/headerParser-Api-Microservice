@@ -1,3 +1,10 @@
+/*
+
+understanding question:
+when user calls api endpoint we have to return the ip address of user language, software which user is using
+
+*/
+
 // server.js
 // where your node app starts
 
@@ -25,9 +32,18 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+//whoami route setup
+app.get("/api/whoami", function(req,res){
+// console.log(req.headers);
+const ip=req.headers["x-forwarded-for"];
+const language=req.headers["accept-language"];
+const software=req.headers["user-agent"];
+
+res.json({ip,language,software})
+});
 
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(process.env.PORT||3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
