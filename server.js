@@ -35,7 +35,7 @@ app.get("/api/hello", function (req, res) {
 //whoami route setup
 app.get("/api/whoami", function(req,res){
 // console.log(req.headers);
-const ip=req.headers["x-forwarded-for"];
+const ip=req.ip;
 const language=req.headers["accept-language"];
 const software=req.headers["user-agent"];
 
