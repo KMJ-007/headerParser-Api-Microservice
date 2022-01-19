@@ -35,11 +35,11 @@ app.get("/api/hello", function (req, res) {
 //whoami route setup
 app.get("/api/whoami", function(req,res){
 // console.log(req.headers);
-const ip=req.ip;
+const ipaddress=req.ip;
 const language=req.headers["accept-language"];
 const software=req.headers["user-agent"];
 
-res.json({ip,language,software})
+res.json({ipaddress,language,software})
 });
 
 
